@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tutorias.mvc.modelo.negocio;
+package org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.memoria;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -11,8 +11,9 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Cita;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Sesion;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Tutoria;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ICitas;
 
-public class Citas {
+public class Citas implements ICitas {
 
 	private List<Cita> coleccionCitas;
 
@@ -20,6 +21,7 @@ public class Citas {
 		coleccionCitas = new ArrayList<>();
 	}
 
+	@Override
 	public List<Cita> get() {
 		List<Cita>citasOrdenadas = copiaProfundaCitas();
 		Comparator<Profesor> comparadorProfesor = Comparator.comparing(Profesor::getDni);
@@ -37,6 +39,7 @@ public class Citas {
 		return copiaCita;
 	}
 
+	@Override
 	public List<Cita> get(Sesion sesion) {
 		if (sesion == null) {
 			throw new NullPointerException("ERROR: La sesión no puede ser nula.");
@@ -51,6 +54,7 @@ public class Citas {
 		return citasSesion;
 	}
 
+	@Override
 	public List<Cita> get(Alumno alumno) {
 		if (alumno == null) {
 			throw new NullPointerException("ERROR: El alumno no puede ser nulo.");
@@ -68,10 +72,12 @@ public class Citas {
 		return citasAlumno;
 	}
 
+	@Override
 	public int getTamano() {
 		return coleccionCitas.size();
 	}
 
+	@Override
 	public void insertar(Cita cita) throws OperationNotSupportedException {
 		if (cita == null) {
 			throw new NullPointerException("ERROR: No se puede insertar una cita nula.");
@@ -85,6 +91,7 @@ public class Citas {
 		}
 	}
 
+	@Override
 	public Cita buscar(Cita cita) {
 		if (cita == null) {
 			throw new IllegalArgumentException("ERROR: No se puede buscar una cita nula.");
@@ -99,6 +106,7 @@ public class Citas {
 
 	}
 
+	@Override
 	public void borrar(Cita cita) throws OperationNotSupportedException {
 		if (cita == null) {
 			throw new IllegalArgumentException("ERROR: No se puede borrar una cita nula.");
