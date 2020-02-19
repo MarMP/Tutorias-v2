@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tutorias.mvc.vista;
+package org.iesalandalus.programacion.tutorias.mvc.vista.texto;
 
 import java.util.List;
 
@@ -10,19 +10,22 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Cita;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Sesion;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Tutoria;
+import org.iesalandalus.programacion.tutorias.mvc.vista.IVista;
 
-public class Vista {
+public class VistaTexto implements IVista {
 
 	private Controlador controlador;
 
-	public Vista() {
+	public VistaTexto() {
 		Opcion.setVista(this);
 	}
 
+	@Override
 	public void setControlador(Controlador controlador) {
 		this.controlador = controlador;
 	}
 
+	@Override
 	public void comenzar() {
 		Consola.mostrarCabecera("Gestión de tutorias para FP Semipresencial del IES Al-Ándalus");
 		int ordinalOpcion;
@@ -34,6 +37,7 @@ public class Vista {
 		} while (ordinalOpcion != Opcion.SALIR.ordinal());
 	}
 
+	@Override
 	public void terminar() {
 		controlador.terminar();
 	}

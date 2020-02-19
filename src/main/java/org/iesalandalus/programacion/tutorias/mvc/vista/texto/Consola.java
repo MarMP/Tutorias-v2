@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tutorias.mvc.vista;
+package org.iesalandalus.programacion.tutorias.mvc.vista.texto;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
