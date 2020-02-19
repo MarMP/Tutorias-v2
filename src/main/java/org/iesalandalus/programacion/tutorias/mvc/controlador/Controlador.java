@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
 
-import org.iesalandalus.programacion.tutorias.mvc.modelo.Modelo;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.IModelo;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Alumno;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Cita;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
@@ -14,10 +14,10 @@ import org.iesalandalus.programacion.tutorias.mvc.vista.Vista;
 
 public class Controlador {
 
-	private Modelo modelo;
+	private IModelo modelo;
 	private Vista vista;
 
-	public Controlador(Modelo modelo, Vista vista) {
+	public Controlador(IModelo modelo, Vista vista) {
 		if (modelo == null) {
 			throw new IllegalArgumentException("ERROR: El modelo no puede ser nulo.");
 		}
